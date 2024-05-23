@@ -9,9 +9,9 @@
 
 	<section class="py-4">
 		<div class="container">
-			{{-- <img src="{{ $project->cover_image }}" alt="{{ $project->title }}" width="240">
-			<p>descrizione: {{ $project->content }}</p> --}}
-			@dd($project)
+			<img src="{{ $project->cover_image }}" alt="{{ $project->title }}" width="240">
+			<p>descrizione: {{ $project->content }}</p>
+
 		</div>
 	</section>
 @endsection
