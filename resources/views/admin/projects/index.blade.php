@@ -2,8 +2,13 @@
 
 @section('content')
 	<header class="py-3">
-		<div class="container">
+		<div class="container d-flex justify-content-between align-items-center">
 			<h1>Projects</h1>
+
+			<a href="{{route('admin.projects.create')}}" class="btn btn-primary">
+				Add a new project
+				<i class="fa-solid fa-pencil"></i>
+			</a>
 		</div>
 	</header>
 
@@ -25,14 +30,24 @@
 					<tbody>
 						{{-- @dd($projects) --}}
 						@forelse($projects as $project)
-							<tr class="">
-								<td scope="row">{{ $project->id }}</td>
-								<td><img src="{{ $project->cover_image }}" alt="{{ $project->title }}" width="140"></td>
-								<td>{{ $project->title }}</td>
-								<td>{{ $project->slug }}</td>
-								<td>view/edit/delete</td>
-							</tr>
+						<tr class="">
 
+
+
+							<td scope="row">{{ $project->id }}</td>
+							<td><img src="{{ $project->cover_image }}" alt="{{ $project->title }}" width="140"></td>
+							<td>{{ $project->title }}</td>
+							<td>{{ $project->slug }}</td>
+							<td>
+								<a class="btn" href="{{ route('admin.projects.show', $project) }}">
+									<i class="fa-solid fa-eye"></i>
+								</a>
+								{{-- <a href="{{route('admin.projects.edit')}}" class="btn">
+									<i class="fa-solid fa-pencil"></i>
+								</a> --}}
+								/edit/delete</td>
+						</tr>
+							
 						@empty
 							<tr class="">
 								<td scope="row" colspan="5">No projects added yet!</td>

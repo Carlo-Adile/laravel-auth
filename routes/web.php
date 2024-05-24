@@ -32,7 +32,7 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); //admin.dashboard
-        Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:id']);
+        Route::resource('/projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
     });
 
 require __DIR__.'/auth.php';
