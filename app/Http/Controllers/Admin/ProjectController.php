@@ -34,15 +34,16 @@ class ProjectController extends Controller
     {
         /* dd($request->all()); */
 
-        /* validate, create, redirect */
-
+        /* validate */
         $validated = $request->validated();
         $slug = Str::slug($request->title, '-');
         $validated['slug'] = $slug;
 
+        /* create */
         Project::create($validated);
 
-        return to_route('admin.projects.index');
+        /* redirect */
+        return to_route('admin.projects.index')->with('message', "Project $request->title created correctly");
     }
 
     /**
@@ -59,7 +60,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -67,7 +68,19 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        /* validate */
+        $validated = $request->validated();
+        $slug = Str::slug($request->title, '-');
+        $validated['slug'] = $slug;
+
+        /* update */
+        $project->update($validated);
+
+        /* redirect */
+        /* return to_route('admin.projects.index'); */
+        /* return redirect()->back(); */
+        return to_route('admin.projects.index')->with('message', "Project $project->title updated correctly");
+
     }
 
     /**
@@ -75,6 +88,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return to_route('admin.projects.index')->with('message', "Project $project->title deleted correctly");
     }
 }

@@ -12,7 +12,9 @@
 		</div>
 	</header>
 
-	<div class="container">
+	<div class="container py-4">
+
+		{{-- segnala errori --}}
 		@if ($errors->any())
 			<div class="alert alert-primary" role="alert">
 				<ul>
