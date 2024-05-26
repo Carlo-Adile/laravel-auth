@@ -9,15 +9,7 @@
 	</header>
 
 	<div class="container">
-		@if ($errors->any())
-			<div class="alert alert-primary" role="alert">
-				<ul>
-					@foreach ($errors->all() as $error)
-						<li>{{ $error }}</li>
-					@endforeach
-				</ul>
-			</div>
-		@endif
+		@include('partials.validation-messages')
  
 		<form action="{{ route('admin.projects.update', $project) }}" method="post">
 			@csrf
@@ -48,7 +40,6 @@
 					@enderror
 				</div>
 			</div>
-			
 
 			<div class="mb-3">
 				<label for="content" class="form-label">Content</label>
@@ -64,8 +55,6 @@
 			<button type="submit" class="btn btn-primary">
 				Save
 			</button>
-
-
 
 		</form>
 	</div>

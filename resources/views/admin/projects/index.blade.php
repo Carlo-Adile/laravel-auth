@@ -17,13 +17,7 @@
 			<h4 class="p-3">All projects</h4>
 
 			{{-- messaggio operazione compiuta --}}
-			@if (session('message'))
-				{{-- bs5-alert-closable --}}
-				<div class="alert alert-success alert-dismissible fade show" role="alert">
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-					{{ session('message') }}
-				</div>
-			@endif
+			@include('partials.session-messages')
 
 			<div class="table-responsive">
 				<table class="table table-light">
@@ -40,9 +34,7 @@
 					<tbody>
 						{{-- @dd($projects) --}}
 						@forelse($projects as $project)
-							<tr class="">
-
-
+							<tr>
 
 								<td scope="row">{{ $project->id }}</td>
 								<td><img src="{{ $project->cover_image }}" alt="{{ $project->title }}" width="140"></td>

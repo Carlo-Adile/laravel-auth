@@ -15,15 +15,7 @@
 	<div class="container py-4">
 
 		{{-- segnala errori --}}
-		@if ($errors->any())
-			<div class="alert alert-primary" role="alert">
-				<ul>
-					@foreach ($errors->all() as $error)
-						<li>{{ $error }}</li>
-					@endforeach
-				</ul>
-			</div>
-		@endif
+		@include('partials.validation-messages')
 
 		<form action="{{ route('admin.projects.store') }}" method="post">
 			@csrf
@@ -64,7 +56,6 @@
 			<button type="submit" class="btn btn-primary">
 				Create
 			</button>
-
 
 
 		</form>
